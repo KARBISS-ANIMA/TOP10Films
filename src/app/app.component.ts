@@ -10,4 +10,22 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'TOP10_films';
+constructor() {
+  const fetch = require('node-fetch');
+
+  const url = 'https://api.themoviedb.org/3/account/21106310/favorite/movies?language=en-US&page=1&sort_by=created_at.asc';
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZGMzZGE2ZTk0MTMwYjcwNWZkMzI0Nzg3MDY5ZjdjNiIsInN1YiI6IjY1ZjQ3YTkxYWE3ODk4MDE3ZGI3YzA2OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eS9D6RS_D0s-63YxoS3z9hWHTAMZ2SQEaIevd8dRbAU'
+    }
+  };
+  fetch(url, options)
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.error('error:' + err));
+
+}
+
 }
