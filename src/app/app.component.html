@@ -32,7 +32,13 @@
 
                 <div class="hover 278"></div>
 
-
+              <ul role="list" class="divide-y divide-gray-200">
+                @for (filmDataTitle of title(); track filmDataTitle) {
+                  <li class="py-4">
+                    {{ filmDataTitle.title }}
+                  </li>
+                }
+              </ul>
 
             </div>
         </div>
