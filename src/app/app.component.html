@@ -6,7 +6,15 @@
               <ul role="list" class="divide-y divide-gray-200">
                 @for (results of title(); track results) {
                   <li class="py-4">
+                    <div class="wrapper glyphicons_v2 picture grey no_image_holder">
+                      <a class="image" href="/movie/{{results.id}}" title="{{results.title}}">
+                        <img loading="lazy" class="poster w-[100%]" src="https://media.themoviedb.org/t/p/w220_and_h330_face/{{results.poster_path}}" srcset="https://media.themoviedb.org/t/p/w220_and_h330_face/{{results.poster_path}} 1x, https://media.themoviedb.org/t/p/w440_and_h660_face/{{results.poster_path}} 2x" alt="{{results.title}}">
+                      </a>
+                    </div>
                     {{ results.title}}
+                    <div>
+                      {{results.vote_average}}
+                    </div>
                   </li>
                 }
               </ul>

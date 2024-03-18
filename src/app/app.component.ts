@@ -2,6 +2,7 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopserviceService } from "./topservice.service";
 import { films } from "./module/Interface";
+import {pipe} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -24,4 +25,5 @@ ngOnInit() {
 }
 
 
+  protected readonly pipe = pipe;
 }
