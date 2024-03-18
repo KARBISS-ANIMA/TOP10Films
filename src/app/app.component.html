@@ -1,47 +1,15 @@
 <body class="items-center content-center ml-14 flex justify-center">
 <div class="text-center text-amber-800">
 <h1>TOP 10 FILMS</h1>
-    <div class="media_items results flex items-center">
-        <div id="page_1" class="page_wrapper">
-            <div class="card style_1">
-                <div class="image">
-                    <div class="wrapper glyphicons_v2 picture grey no_image_holder">
-                        <a class="image" href="https://www.themoviedb.org/movie/278-the-shawshank-redemption" title="Побег из Шоушенка">
-                            <img loading="lazy" class="poster w-[100%]" src="https://media.themoviedb.org/t/p/w220_and_h330_face/yvmKPlTIi0xdcFQIFcQKQJcI63W.jpg" srcset="https://media.themoviedb.org/t/p/w220_and_h330_face/yvmKPlTIi0xdcFQIFcQKQJcI63W.jpg 1x, https://media.themoviedb.org/t/p/w440_and_h660_face/yvmKPlTIi0xdcFQIFcQKQJcI63W.jpg 2x" alt="Побег из Шоушенка">
 
-                        </a>
-                    </div>
-                    <div class="options" data-id="278" data-object-id="4bc88d49017a3c122d005189" data-media-type="movie" data-role="tooltip">
-                        <a class="no_click" href="#"><div class="glyphicons_v2 circle-more white"></div></a>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="consensus tight">
-                        <div class="outer_ring">
-                            <div class="user_score_chart 4bc88d49017a3c122d005189" data-percent="87.04" data-track-color="#204529" data-bar-color="#21d07a">
-                                <div class="percent">
-                                    <span class="icon icon-r87"></span>
-                                </div>
-                                <canvas height="34" width="34"></canvas></div>
-                        </div>
-                    </div>
-
-                    <h2><a href="https://www.themoviedb.org/movie/278-the-shawshank-redemption" title="Побег из Шоушенка">Побег из Шоушенка</a></h2>
-                    <p>23 сен 1994</p>
-                </div>
-
-                <div class="hover 278"></div>
 
               <ul role="list" class="divide-y divide-gray-200">
-                @for (filmDataTitle of title(); track filmDataTitle) {
+                @for (results of title(); track results) {
                   <li class="py-4">
-                    {{ filmDataTitle.title }}
+                    {{ results.title}}
                   </li>
                 }
               </ul>
 
             </div>
-        </div>
-    </div>
-</div>
 </body>

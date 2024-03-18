@@ -1,5 +1,10 @@
-export interface filmDataInterface{
-  aduIt: boolean,
+export interface filmListInterface{
+  page: number
+  results: [];
+}
+
+export interface films{
+  adult: boolean,
   backdrop_path: string,
   genre_ids:[],
   id: number,
@@ -12,9 +17,5 @@ export interface filmDataInterface{
   title: string,
   video: boolean,
   vote_average: number,
-  vote_count: number
-}
-
-export interface titleFilm{
-  original_title: string,
+  vote_count: number,
 }
