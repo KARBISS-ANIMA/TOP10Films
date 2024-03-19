@@ -62,7 +62,7 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
+                  "with": "src/environments/environment.staging.ts"
                 }
               ]
             }
@@ -72,6 +72,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "staging": {
+              "browserTarget": "angular-environment-example:build:staging"
+            },
             "production": {
               "buildTarget": "TOP10_films:build:production"
             },

@@ -1,10 +1,8 @@
 <body class="items-center content-center ml-14 flex justify-center">
 <div class="text-center text-amber-800">
 <h1>TOP 10 FILMS</h1>
-
-
+  @for (results of title(); track results) {
               <ul role="list" class="divide-y divide-gray-200">
-                @for (results of title(); track results) {
                   <li class="py-4">
                     <div class="wrapper glyphicons_v2 picture grey no_image_holder">
                       <a class="image" href="/movie/{{results.id}}" title="{{results.title}}">
@@ -13,11 +11,10 @@
                     </div>
                     {{ results.title}}
                     <div>
-                      {{results.vote_average}}
+                      <p>Рейтинг: {{results.vote_average}}/10</p>
                     </div>
                   </li>
-                }
               </ul>
-
+  }
             </div>
 </body>
