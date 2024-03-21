@@ -19,3 +19,8 @@ export interface films{
   vote_average: number,
   vote_count: number,
 }
+ export interface favorList{
+  media_type: string,
+   media_id: number,
+   favorite: boolean
+ }
