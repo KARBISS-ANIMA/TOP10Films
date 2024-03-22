@@ -2,13 +2,15 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {TopserviceService} from "../topservice.service";
 import {favorList, films} from "../module/Interface";
 import {RouterLinkActive} from "@angular/router";
-import {animationFrameProvider} from "rxjs/internal/scheduler/animationFrameProvider";
+import {ButtonLikeComponent} from "../elements/common/button-like/button-like.component";
 
 @Component({
   selector: 'app-top10-list',
   standalone: true,
   imports: [
-    RouterLinkActive
+    RouterLinkActive,
+    ButtonLikeComponent,
+    ButtonLikeComponent
   ],
   templateUrl: './top10-list.component.html',
   styleUrl: './top10-list.component.scss'
@@ -19,14 +21,10 @@ export class Top10ListComponent implements OnInit {
 
   title: WritableSignal<films[]>=signal([]);
 
-  favorit: WritableSignal<films[]>=signal([]);
   ngOnInit() {
     this.servis.getFilmList().subscribe((filmDataTitle)=>{
       this.title.set(filmDataTitle.results);
     });
-    this.servis.getFavoritFilmList().subscribe((filmDataTitle)=>{
-      this.favorit.set(filmDataTitle.results);
-    })
   }
   addFavor: favorList={media_type: '', media_id: 0, favorite: false}
   addFavorit(addid: number){
@@ -36,10 +34,5 @@ export class Top10ListComponent implements OnInit {
   });
     alert('Add in favorite list')
   }
-  hasFavorite(filmId:number){
-    if(this.favorit().find(x=>x.id==filmId)?.id!>1){
-      return "text-fuchsia-500 fill-fuchsia-500 hover:fill-fuchsia-300";
-    } else {return "text-gray-400 hover:fill-gray-400"}
 
-  }
 }
