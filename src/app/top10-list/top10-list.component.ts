@@ -2,6 +2,7 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {TopserviceService} from "../topservice.service";
 import {favorList, films} from "../module/Interface";
 import {RouterLinkActive} from "@angular/router";
+import {animationFrameProvider} from "rxjs/internal/scheduler/animationFrameProvider";
 
 @Component({
   selector: 'app-top10-list',
@@ -35,7 +36,10 @@ export class Top10ListComponent implements OnInit {
   });
     alert('Add in favorite list')
   }
-  favoritFound(){
-    return "text-gray-400 hover:fill-gray-400"
+  hasFavorite(filmId:number){
+    if(this.favorit().find(x=>x.id==filmId)?.id!>1){
+      return "text-fuchsia-500 fill-fuchsia-500 hover:fill-fuchsia-300";
+    } else {return "text-gray-400 hover:fill-gray-400"}
+
   }
 }
