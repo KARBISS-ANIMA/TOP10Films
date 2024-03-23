@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TOP10_films": {
+    "test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/top10-films",
+            "outputPath": "dist/test",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -32,12 +32,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -72,14 +67,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "staging": {
-              "browserTarget": "angular-environment-example:build:staging"
-            },
             "production": {
-              "buildTarget": "TOP10_films:build:production"
+              "buildTarget": "test:build:production"
             },
             "development": {
-              "buildTarget": "TOP10_films:build:development"
+              "buildTarget": "test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "TOP10_films:build"
+            "buildTarget": "test:build"
           }
         },
         "test": {
@@ -113,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "e532ac12-1787-4726-95d2-2daff4db874c"
   }
 }
