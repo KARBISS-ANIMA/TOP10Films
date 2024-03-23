@@ -1,5 +1,5 @@
 import {Component, inject, Input, OnInit, signal, WritableSignal} from '@angular/core';
-import {films} from "../../../module/Interface";
+import {favorList, films} from "../../../module/Interface";
 import {TopserviceService} from "../../../topservice.service";
 
 @Component({
@@ -29,5 +29,14 @@ export class ButtonLikeComponent implements OnInit{
 
   }
 
+  addFavor: favorList={media_type: '', media_id: 0, favorite: false}
+  addFavorit(addid: number){
+    this.addFavor= {media_type: 'movie', media_id: addid, favorite: true};
+    this.servis.addFavoritFilms(this.addFavor as favorList).subscribe(() => {
+      console.log("Movie added favorite list");
+      location.reload()
+    });
+    alert('Add in favorite list')
+  }
 
 }
