@@ -30,13 +30,23 @@ export class ButtonLikeComponent implements OnInit{
   }
 
   addFavor: favorList={media_type: '', media_id: 0, favorite: false}
-  addFavorit(addid: number){
-    this.addFavor= {media_type: 'movie', media_id: addid, favorite: true};
-    this.servis.addFavoritFilms(this.addFavor as favorList).subscribe(() => {
-      console.log("Movie added favorite list");
-      location.reload()
-    });
-    alert('Add in favorite list')
+  addFavorit(addid: number) {
+    if (this.hasFavorite(addid)) {
+      this.addFavor = {media_type: 'movie', media_id: addid, favorite: false};
+      this.servis.addFavoritFilms(this.addFavor as favorList).subscribe(() => {
+        console.log("The movie was deleted from favorite list");
+        location.reload()
+      });
+      alert('The movie was deleted from favorite list')
+
+    } else {
+      this.addFavor = {media_type: 'movie', media_id: addid, favorite: true};
+      this.servis.addFavoritFilms(this.addFavor as favorList).subscribe(() => {
+        console.log("The movie has been added to favorite list");
+        location.reload()
+      });
+      alert('The movie has been added to favorite list')
+    }
   }
 
 }

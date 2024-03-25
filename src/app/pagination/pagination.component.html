@@ -1,0 +1,30 @@
+<div class="text-center text-amber-800">
+  <h1>PAGINATION</h1>
+  <div>
+    <button (click)="backPage()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+    </svg>
+    </button>
+    <p class="w-24"><input placeholder="{{numpage}}">стр.</p>
+    <button (click)="nextPage()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+    </svg>
+    </button>
+  </div>
+  @for (result of title(); track result){
+    <ul role="list" class="divide-y divide-gray-200 mt-16 w-[70%]">
+      <li class="py-4">
+        <div class="wrapper glyphicons_v2 picture grey no_image_holder">
+          <a class="list-image-none" href="/movie/{{result.id}}" title="{{result.title}}">
+            <img loading="lazy" class="poster w-[100%]" src="https://media.themoviedb.org/t/p/w220_and_h330_face/{{result.poster_path}}" srcset="https://media.themoviedb.org/t/p/w220_and_h330_face/{{result.poster_path}} 1x, https://media.themoviedb.org/t/p/w440_and_h660_face/{{result.poster_path}} 2x" alt="{{result.title}}">
+          </a>
+        </div>
+        <p>{{result.title}}</p>
+        <div>
+          <p>Рейтинг: {{result.vote_average}}/10</p>
+        </div>
+      </li>
+    </ul>
+    <app-button-like [filmId]="result.id"/>
+  }
+</div>

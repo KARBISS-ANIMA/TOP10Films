@@ -24,3 +24,7 @@ export interface films{
    media_id: number,
    favorite: boolean
  }
+
+ export interface numberPage{
+  page:number
+ }
