@@ -1,12 +1,13 @@
+<form [formGroup]="form">
 <div class="text-center text-amber-800">
   <h1>PAGINATION</h1>
   <div>
-    <button (click)="backPage()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <button (click)="selectPage(valuePage-1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
     </svg>
     </button>
-    <p class="w-24"><input placeholder="{{numpage}}">стр.</p>
-    <button (click)="nextPage()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <p>{{valuePage}}</p>
+    <button (click)="selectPage(valuePage+1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
     </svg>
     </button>
@@ -28,3 +29,4 @@
     <app-button-like [filmId]="result.id"/>
   }
 </div>
+</form>

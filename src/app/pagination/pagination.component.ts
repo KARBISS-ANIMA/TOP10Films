@@ -4,6 +4,7 @@ import {TopserviceService} from "../topservice.service";
 import {films} from "../module/Interface";
 import {RouterOutlet} from "@angular/router";
 import {numbpage} from "../module/interface-field";
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 
 @Component({
@@ -12,32 +13,32 @@ import {numbpage} from "../module/interface-field";
   imports: [
     ButtonLikeComponent,
     RouterOutlet,
+    ReactiveFormsModule,
   ],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent implements OnInit {
+  form!:FormGroup
 
   servis: TopserviceService = inject(TopserviceService)
 
-  numpage=numbpage.page
+  valuePage=numbpage.page
   title: WritableSignal<films[]>=signal([]);
 
-  nextPage(){
-    numbpage.page+=1;
-  }
-  backPage(){
-    if(this.numpage===1) {
-    alert("Это первая страница")
-    }else {
-      this.numpage -= 1;
-      location.reload();
-    }
-  }
   ngOnInit() {
-    this.servis.getPageFilmList(this.numpage).subscribe((filmDataTitle)=>{
-      this.title.set(filmDataTitle.results);
-    });
+    this.updateVisiblePage()
   }
+
+  public selectPage(page: number){
+    this.valuePage = page;
+    this.updateVisiblePage();
+  }
+  updateVisiblePage(){
+  this.servis.getPageFilmList(this.valuePage).subscribe((filmDataTitle)=>{
+  this.title.set(filmDataTitle.results);
+});
+  }
+
 }
 
