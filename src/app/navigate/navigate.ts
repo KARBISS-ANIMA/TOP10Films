@@ -12,10 +12,10 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
     RouterLinkActive
   ],
   template: `
-  <div>
-  <button class="b" routerLinkActive="" routerLink="/filmList">ALL FILMS</button>
-  <button routerLink="/paginate">PAGINATION FILMS</button>
-</div>
+  <ul>
+  <li><a routerLinkActive="text-green-600" routerLink="/filmList">ALL FILMS</a></li>
+  <li><a routerLinkActive="text-green-600" [routerLink]="['/paginate']" [queryParams]="{page:1}">PAGINATION FILMS</a></li>
+</ul>
   <router-outlet/>
   `
 })

@@ -2,9 +2,11 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {ButtonLikeComponent} from "../elements/common/button-like/button-like.component";
 import {TopserviceService} from "../topservice.service";
 import {films} from "../module/Interface";
-import {RouterOutlet} from "@angular/router";
-import {numbpage} from "../module/interface-field";
+import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -19,12 +21,21 @@ import {FormGroup, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent implements OnInit {
-  form!:FormGroup
+  form!:FormGroup;
 
-  servis: TopserviceService = inject(TopserviceService)
+  servis: TopserviceService = inject(TopserviceService);
 
-  valuePage=numbpage.page
+  maxLegh=500;
+
+route: ActivatedRoute = inject(ActivatedRoute)
+
+  router: Router = inject(Router)
+
+
+
   title: WritableSignal<films[]>=signal([]);
+
+valuePage = Number(this.route.snapshot.queryParamMap.get('page'))
 
   ngOnInit() {
     this.updateVisiblePage()
@@ -32,13 +43,13 @@ export class PaginationComponent implements OnInit {
 
   public selectPage(page: number){
     this.valuePage = page;
+    this.router.navigate(['/paginate', {page:this.valuePage}])
     this.updateVisiblePage();
   }
   updateVisiblePage(){
   this.servis.getPageFilmList(this.valuePage).subscribe((filmDataTitle)=>{
   this.title.set(filmDataTitle.results);
-});
+   });
   }
-
 }
 

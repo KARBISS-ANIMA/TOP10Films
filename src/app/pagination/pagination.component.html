@@ -1,13 +1,31 @@
 <form [formGroup]="form">
 <div class="text-center text-amber-800">
   <h1>PAGINATION</h1>
-  <div>
-    <button (click)="selectPage(valuePage-1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <h1>{{this.valuePage}}</h1>
+  <div class="bg-gray-300">
+    <button class="hover:text-green-600 bg-gray-400"
+      [disabled]="valuePage===1"
+      (click)="selectPage(valuePage-1)"
+    ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
     </svg>
     </button>
-    <p>{{valuePage}}</p>
-    <button (click)="selectPage(valuePage+1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <button (click)="selectPage(1)" class="hover:text-green-600 bg-gray-400">начало</button>
+    <p class="font-bold m-4">
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage<=3" (click)="selectPage(valuePage-3)">{{valuePage<=3 ? "_" : valuePage-3}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage<=2" (click)="selectPage(valuePage-2)">{{valuePage<=2 ? "_" : valuePage-2}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage<=1" (click)="selectPage(valuePage-1)">{{valuePage<=1 ? "_" : valuePage-1}}</button>
+    <label class="text-fuchsia-50">{{valuePage}}</label>
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage>=maxLegh" (click)="selectPage(valuePage+1)">{{valuePage>=maxLegh ? "_" : valuePage+1}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage>=maxLegh-1" (click)="selectPage(valuePage+2)">{{valuePage>=maxLegh-1 ? "_" : valuePage+2}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="valuePage>=maxLegh-2" (click)="selectPage(valuePage+3)">{{valuePage>=maxLegh-2 ? "_" : valuePage+3}}</button>
+    </p>
+    <button (click)="selectPage(maxLegh)" class="hover:text-green-600 bg-gray-400">конец</button>
+    <button
+      [disabled]="valuePage==maxLegh"
+      (click)="selectPage(valuePage+1)"
+      class="hover:text-green-600 bg-gray-400"
+    ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
     </svg>
     </button>

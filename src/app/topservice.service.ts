@@ -1,9 +1,8 @@
-import {inject, Injectable, Input} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {environment} from "../environments/environment";
 import {Observable, map} from "rxjs";
 import {favorList, filmListInterface} from "./module/Interface";
 import {HttpClient} from "@angular/common/http";
-import {PaginationComponent} from "./pagination/pagination.component";
 
 @Injectable({
   providedIn: 'root'
