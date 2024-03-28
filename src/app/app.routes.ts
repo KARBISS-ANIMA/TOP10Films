@@ -14,7 +14,6 @@ export const routes: Routes = [
           {
             path: 'paginate',
             component: PaginationComponent,
-            data: {page: numbpage.page}
           },
 
 ];
