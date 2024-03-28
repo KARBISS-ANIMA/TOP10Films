@@ -1,14 +1,10 @@
 import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {ButtonLikeComponent} from "../elements/common/button-like/button-like.component";
 import {TopserviceService} from "../topservice.service";
-import {films, numberPage} from "../module/Interface";
+import {films} from "../module/Interface";
 import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import { Router } from '@angular/router';
-import {Observable} from "rxjs";
-import { tap } from 'rxjs/operators'
-import {subscribe} from "node:diagnostics_channel";
-import * as querystring from "querystring";
 
 
 
@@ -44,10 +40,6 @@ export class PaginationComponent implements OnInit {
 
 
   ngOnInit() {
-
-  tap(page =>{
-    page = Number(this.route.snapshot.paramMap.get('page'))
-  })
     this.updateVisiblePage()
   }
 
