@@ -5,6 +5,7 @@ import {films} from "../module/Interface";
 import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import { Router } from '@angular/router';
+import {tap} from "rxjs";
 
 
 
@@ -32,7 +33,8 @@ export class PaginationComponent implements OnInit {
   router: Router = inject(Router)
 
 
-  page = Number(this.route.snapshot.queryParamMap.get('page'))
+  page :any
+
 
 
 
@@ -40,6 +42,8 @@ export class PaginationComponent implements OnInit {
 
 
   ngOnInit() {
+  this.route.queryParams.subscribe(params =>{
+    this.page = +params['page']})
     this.updateVisiblePage()
   }
 
