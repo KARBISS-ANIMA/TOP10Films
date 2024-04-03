@@ -1,0 +1,31 @@
+<form [formGroup]="formAuth">
+  <label class="text-4xl">Authorisation</label>
+  <div>
+    <div>
+      <label>Имя: </label>
+      <input
+        formControlName="userName"
+        class="bg-gray-300"
+        placeholder="Введите имя"
+      >
+    </div>
+    <div>
+      <label>Email: </label>
+      <input
+        formControlName="email"
+        class="bg-gray-300"
+        placeholder="Введите @email"
+      >
+    </div>
+    <div>
+      <label>Пароль: </label>
+      <input
+        formControlName="password"
+        class="bg-gray-300"
+        placeholder="Введите пароль"
+      >
+    </div>
+    <button class="bg-emerald-400 hover:bg-emerald-600" (click)="auth()">Войти</button>
+    <button routerLink="/regis">Регистрация</button>
+  </div>
+</form>

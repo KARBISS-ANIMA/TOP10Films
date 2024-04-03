@@ -1,3 +1,5 @@
+import PocketBase, {RecordService} from 'pocketbase';
+
 export interface filmListInterface{
   page: number
   results: [];
@@ -28,3 +30,29 @@ export interface films{
  export interface numberPage{
   page:number
  }
+
+interface Task {
+  id:   string;
+  name: string;
+}
+
+interface Post {
+  id:     string;
+  title:  string;
+  active: boolean;
+}
+
+interface TypedPocketBase extends PocketBase {
+  collection(idOrName: string): RecordService // default fallback for any other collection
+  collection(idOrName: 'tasks'): RecordService<Task>
+  collection(idOrName: 'posts'): RecordService<Post>
+}
+
+interface data{
+  "username": string,
+  "email": string,
+  "emailVisibility": true,
+  "password": string,
+  "passwordConfirm": string,
+  "name": "test"
+}

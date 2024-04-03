@@ -5,9 +5,7 @@ import {films} from "../module/Interface";
 import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import { Router } from '@angular/router';
-import {__await} from "tslib";
-
-
+import PocketBase from 'pocketbase';
 
 
 
@@ -23,7 +21,6 @@ import {__await} from "tslib";
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent implements OnInit {
-  form!:FormGroup;
 
   servis: TopserviceService = inject(TopserviceService);
 
@@ -33,18 +30,28 @@ export class PaginationComponent implements OnInit {
 
   router: Router = inject(Router)
 
-
   page :any
 
+
+
+  data = new FormData()
+
+  async getSchedules(){
+    const pb = new PocketBase('http://base.ownfocus.pro');
+    const result = await pb.collection('schedules').getList(1, 20, {});
+    return console.log(result)
+  }
 
   title: WritableSignal<films[]>=signal([]);
 
 
   ngOnInit() {
-    this.getPageNumber().then(()=>{ return console.log('hello3')})
+    this.getSchedules().then(()=>{ return console.log('hello3')})
     console.log('hello1')
   this.route.queryParams.subscribe(params =>{
-    this.page = +params['page']})
+    this.page = +params['page']
+    return console.log('query param fin')
+  })
     this.updateVisiblePage().then(()=>{return console.log('update visible page over')})
   }
 
@@ -62,5 +69,6 @@ export class PaginationComponent implements OnInit {
    this.title.set(filmDataTitle.results)
    })
    return console.log('update visible page')
+
   }
 }

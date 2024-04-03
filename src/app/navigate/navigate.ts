@@ -15,6 +15,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
   <ul>
   <li><a routerLinkActive="text-green-600" routerLink="/filmList">ALL FILMS</a></li>
   <li><a routerLinkActive="text-green-600" [routerLink]="['/paginate']" [queryParams]="{page:1}">PAGINATION FILMS</a></li>
+    <li><a routerLinkActive="text-green-600" routerLink="/auth">Authorisation</a></li>
 </ul>
   <router-outlet/>
   `
