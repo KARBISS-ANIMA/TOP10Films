@@ -1,33 +1,26 @@
 import { Routes } from '@angular/router';
-import {AppComponent} from "./app.component";
-import { AppNavigate } from "./app-navigate/app-navigate";
-import {Top10ListComponent} from "./top10-list/top10-list.component";
-import {FavoritListComponent} from "./favorit-list/favorit-list.component";
+import {FilmListComponent} from "./film-list/film-list.component";
+import {PaginationComponent} from "./pagination/pagination.component";
+import {RegistratedComponent} from "./registrated/registrated.component"
+import {AuthorisationComponent} from "./authorisation/authorisation.component";
 
 export const routes: Routes = [
-  {
-    path:'',
-    component: AppComponent,
-    children:[
-      {
-        path: '',
-        redirectTo: 'AppNavigate',
-        pathMatch: "full"
-      },
-      {
-        path:'',
-        component: AppNavigate,
-        children:[
+
           {
-            path: 'top10',
-            component: Top10ListComponent
+            path: 'filmList',
+            component: FilmListComponent
           },
           {
-            path: 'favorit',
-            component: FavoritListComponent
-          }
-        ]
-      }
-    ]
+            path: 'paginate',
+            component: PaginationComponent,
+          },
+  {
+    path: 'regis',
+    component: RegistratedComponent,
+  },
+  {
+    path: 'auth',
+    component: AuthorisationComponent,
   }
+
 ];

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Top10ListComponent } from './top10-list.component';
+import { ButtonLikeComponent } from './button-like.component';
 
-describe('Top10ListComponent', () => {
-  let component: Top10ListComponent;
-  let fixture: ComponentFixture<Top10ListComponent>;
+describe('ButtonLikeComponent', () => {
+  let component: ButtonLikeComponent;
+  let fixture: ComponentFixture<ButtonLikeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Top10ListComponent]
+      imports: [ButtonLikeComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(Top10ListComponent);
+    fixture = TestBed.createComponent(ButtonLikeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

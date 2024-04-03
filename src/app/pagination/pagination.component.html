@@ -1,0 +1,51 @@
+<form>
+<div class="text-center text-amber-800">
+  <h1>PAGINATION</h1>
+  <div class="bg-gray-300">
+    <button (click)="selectPage(1)" class="hover:text-green-600 bg-gray-400 mr-14">начало</button>
+    <button (click)="selectPage(maxLegh)" class="hover:text-green-600 bg-gray-400 ml-12">конец</button>
+    <p class="font-bold ml-2 mr-2">
+    <button class="hover:text-green-600 bg-gray-400"
+      [disabled]="page===1"
+      (click)="selectPage(page-1)"
+    ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+    </svg>
+    </button>
+      <button class="hover:text-green-600 m-2" [disabled]="page<=3" (click)="selectPage(page-3)">{{page<=3 ? "_" : page-3}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="page<=2" (click)="selectPage(page-2)">{{page<=2 ? "_" : page-2}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="page<=1" (click)="selectPage(page-1)">{{page<=1 ? "_" : page-1}}</button>
+    <label class="text-fuchsia-50">{{page}}</label>
+      <button class="hover:text-green-600 m-2" [disabled]="page>=maxLegh" (click)="selectPage(page+1)">{{page>=maxLegh ? "_" : page+1}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="page>=maxLegh-1" (click)="selectPage(page+2)">{{page>=maxLegh-1 ? "_" : page+2}}</button>
+      <button class="hover:text-green-600 m-2" [disabled]="page>=maxLegh-2" (click)="selectPage(page+3)">{{page>=maxLegh-2 ? "_" : page+3}}</button>
+    <button
+      [disabled]="page==maxLegh"
+      (click)="selectPage(page+1)"
+      class="hover:text-green-600 bg-gray-400"
+    ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+    </svg>
+    </button>
+    </p>
+  </div>
+  @for (result of title(); track result){
+    <div class="text-balance float-right break-inside-auto box-border hover:box-content hover:text-fuchsia-500 mx-auto md:w-32 lg:w-48">
+    <ul role="list" class="divide-y divide-gray-200 mt-16 w-[60%]">
+      <li class="py-4">
+        <div class="wrapper glyphicons_v2 picture grey no_image_holder">
+          <a class="list-image-none" href="https://www.themoviedb.org/movie/{{result.id}}" title="{{result.title}}">
+            <img loading="lazy" class="poster w-[100%]" src="https://media.themoviedb.org/t/p/w220_and_h330_face/{{result.poster_path}}" srcset="https://media.themoviedb.org/t/p/w220_and_h330_face/{{result.poster_path}} 1x, https://media.themoviedb.org/t/p/w440_and_h660_face/{{result.poster_path}} 2x" alt="{{result.title}}">
+          </a>
+        </div>
+        <p>{{result.title}}</p>
+        <div>
+          <p>Рейтинг: {{result.vote_average}}/10</p>
+        </div>
+        <app-button-like [filmId]="result.id"/>
+      </li>
+    </ul>
+    </div>
+  }
+</div>
+</form>

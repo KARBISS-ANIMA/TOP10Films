@@ -10,6 +10,8 @@ import {HttpClient} from "@angular/common/http";
 export class TopserviceService {
 
   private http: HttpClient = inject(HttpClient);
+
+
   constructor() { }
 
   getFilmList(): Observable<filmListInterface>{
@@ -23,6 +25,19 @@ export class TopserviceService {
         })
     );
   }
+
+  getPageFilmList(numPage:number): Observable<filmListInterface>{
+    return this.http.get(`${environment.api}/3/movie/popular?language=ru-EU&page=`+numPage, {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${environment.apikey}`
+      }}).pipe(
+      map((response) => {
+        return response as filmListInterface;
+      })
+    );
+  }
+
   getFavoritFilmList(): Observable<filmListInterface>{
     return this.http.get(`${environment.api}/3/account/21106310/favorite/movies?language=ru-EU&page=1&sort_by=created_at.asc`, {
       headers: {
