@@ -2,6 +2,8 @@ import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import PocketBase from 'pocketbase';
+import {authToken, task} from "../module/interface-field";
+import {Task} from "../module/Interface"
 
 @Component({
   selector: 'app-authorisation',
@@ -32,7 +34,11 @@ export class AuthorisationComponent implements OnInit{
       const password = String(this.formAuth.get('password')?.value);
       const pb = new PocketBase('https://base.ownfocus.pro');
       const store = await pb.collection('users').authWithPassword(email, password);
-      return console.log(store)
+      const result = await pb.collection('schedules').getList(1, 20, {});
+      authToken.token=store;
+      authToken.email = email;
+      authToken.password = password;
+      return console.log(store, result)
     }
   }
   ngOnInit() {}

@@ -1,6 +1,11 @@
 <form>
 <div class="text-center text-amber-800">
   <h1>PAGINATION</h1>
+  @for (items of List(); track items){
+    <div>
+    {{schedules(items)}}
+    </div>
+  }
   <div class="bg-gray-300">
     <button (click)="selectPage(1)" class="hover:text-green-600 bg-gray-400 mr-14">начало</button>
     <button (click)="selectPage(maxLegh)" class="hover:text-green-600 bg-gray-400 ml-12">конец</button>

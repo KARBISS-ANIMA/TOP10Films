@@ -1,7 +1,12 @@
-import {numberPage} from "./Interface";
-import {Inject} from "@angular/core";
+import {authStore, Task} from "./Interface";
 
-export const numbpage: numberPage={
-  page: 1
+export const authToken:authStore={
+ token : '',
+  email: '',
+  password: ''
+}
 
+export const task:Task={
+  id:   '',
+  name: '',
 }

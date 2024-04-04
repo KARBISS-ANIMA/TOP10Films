@@ -1,4 +1,4 @@
-import PocketBase, {RecordService} from 'pocketbase';
+
 
 export interface filmListInterface{
   page: number
@@ -27,32 +27,17 @@ export interface films{
    favorite: boolean
  }
 
- export interface numberPage{
-  page:number
- }
+export interface authStore{
+  token: any,
+  email: string,
+  password: string
+}
 
-interface Task {
+export interface Task {
+  // type the collection fields you want to use...
   id:   string;
   name: string;
 }
+ export interface items{
 
-interface Post {
-  id:     string;
-  title:  string;
-  active: boolean;
-}
-
-interface TypedPocketBase extends PocketBase {
-  collection(idOrName: string): RecordService // default fallback for any other collection
-  collection(idOrName: 'tasks'): RecordService<Task>
-  collection(idOrName: 'posts'): RecordService<Post>
-}
-
-interface data{
-  "username": string,
-  "email": string,
-  "emailVisibility": true,
-  "password": string,
-  "passwordConfirm": string,
-  "name": "test"
-}
+ }
